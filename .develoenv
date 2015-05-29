@@ -1,0 +1,4 @@
+KILLBILL_SERVER="https://killbillsrc014-trifon.apps.d3-soft.com/"
+KILLBILL_API_KEY=startapp
+KILLBILL_API_SECRET=startappsecret
+KILLBILL_ADMIN_UI_LOCAL_PORT=8013

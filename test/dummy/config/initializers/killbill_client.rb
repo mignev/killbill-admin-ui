@@ -1,4 +1,7 @@
-KillBillClient.url = 'http://127.0.0.1:8080'
-#KillBillClient.api_key = 'bob'
-#KillBillClient.api_secret = 'lazar'
+KillBillClient::API.net_http = {
+  :verify_mode => OpenSSL::SSL::VERIFY_NONE
+}
 
+KillBillClient.url        = ENV['KILLBILL_SERVER']
+KillBillClient.api_key    = ENV['KILLBILL_API_KEY']
+KillBillClient.api_secret = ENV['KILLBILL_API_SECRET']

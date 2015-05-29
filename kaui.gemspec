@@ -44,6 +44,6 @@ Gem::Specification.new do |s|
     s.add_development_dependency 'jdbc-mysql', '~> 5.1.25'
   else
     s.add_development_dependency 'sqlite3'
-    s.add_development_dependency 'mysql2'
+    # s.add_development_dependency 'mysql2'
   end
 end

@@ -1,0 +1,42 @@
+##########################################################################
+#                                                                        #
+#  This script is called when you write the command : "develo server"    #
+#  on project with installed .develo                                     #
+#                                                                        #
+#  This script is a perfect place for logic like:                        #
+#                                                                        #
+#  If you are working on Ruby on Rails project                           #
+#  | rails server                                                        #
+#                                                                        #
+#  If you are working on Django project                                  #
+#  | django-admin.py runserver 1.2.3.4:8000                              #
+#                                                                        #
+#                        And stuff like these :)                         #
+#                                                                        #
+#                                                                        #
+#               More on https://github.com/mignev/develo                 #
+#                                                                        #
+##########################################################################
+
+args=$(echo $@);
+
+# export your local dev envs in .env file
+if [ -f .develoenv ]; then
+   source .develoenv;
+fi
+
+if [ ! -z "$(echo $args| grep 'stop')" ]; then
+  docker rm -f killbill-admin-ui;
+else
+   docker rm -f killbill-admin-ui;
+
+   eval docker run -d --name killbill-admin-ui \
+   -e "KILLBILL_SERVER=$KILLBILL_SERVER" \
+   -e "KILLBILL_API_KEY=$KILLBILL_API_KEY" \
+   -e "KILLBILL_API_SECRET=$KILLBILL_API_SECRET" \
+   --add-host killbillsrc014-trifon.apps.d3-soft.com:87.120.152.214 \
+   -p $KILLBILL_ADMIN_UI_LOCAL_PORT:3000 \
+   -t killbill-admin-ui
+
+   echo "Access the admin on: http://localhost:$KILLBILL_ADMIN_UI_LOCAL_PORT/";
+fi

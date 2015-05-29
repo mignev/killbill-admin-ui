@@ -1,0 +1,25 @@
+cat << EOF
+
+To Setup your killbill-admin-ui please do the following steps:
+---> Step 1 : Create file $(pwd)/.develoenv
+
+   touch $(pwd)/.develoenv
+
+---> Step 2: Add the following environment variables into file $(pwd)/.develoenv
+
+KILLBILL_SERVER="https://killbillserver.com/"
+KILLBILL_API_KEY=apikey
+KILLBILL_API_SECRET=apisecret
+KILLBILL_ADMIN_UI_LOCAL_PORT=3000
+
+---> Step 3 : Build docker container
+
+  develo build
+
+---> Step 4 : Start app
+
+  develo server
+
+That's it! :)
+
+EOF
